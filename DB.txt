@@ -14,13 +14,12 @@ CREATE TABLE `member`(
 	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	regDate DATETIME NOT NULL,
 	updateDate DATETIME NOT NULL,
-	loginId VARCHAR(50) NOT NULL ,
+	loginId VARCHAR(50) NOT NULL,
 	loginPw VARCHAR(100) NOT NULL,
 	`name` VARCHAR(20) NOT NULL
 );
-ALTER TABLE `member` MODIFY COLUMN loginId VARCHAR(50) NOT NULL UNIQUE;
 
-DESC `member`;
+ALTER TABLE `member` MODIFY COLUMN loginId VARCHAR(50) NOT NULL UNIQUE;
 
 INSERT INTO article
 SET regDate = NOW(),
@@ -38,6 +37,4 @@ loginPw = 'test1',
 SELECT * FROM article;
 SELECT * FROM `member`;
 
-SELECT COUNT(*) > 0 FROM `member` WHERE loginId = 'test1';
-
-#TRUNCATE article;
+# TRUNCATE article;
