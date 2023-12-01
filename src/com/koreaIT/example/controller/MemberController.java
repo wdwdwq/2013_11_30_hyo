@@ -3,9 +3,10 @@ package com.koreaIT.example.controller;
 import java.sql.Connection;
 import java.util.Scanner;
 
-import com.koreaIT.example.JAM.dto.Member;
-import com.koreaIT.example.Service.MemberService;
 import com.koreaIT.example.JAM.Session.Session;
+import com.koreaIT.example.JAM.dto.Member;
+import com.koreaIT.example.JAM.util.Util;
+import com.koreaIT.example.Service.MemberService;
 
 public class MemberController {
 	private Scanner sc;
@@ -144,10 +145,16 @@ public class MemberController {
 	}
 
 	public void showProfile() {
-		if(Session.isLogined() == false) {
-			
+		if (Session.isLogined() == false) {
+			System.out.println("로그인 후 이용해주세요");
+			return;
 		}
 		
+		System.out.println("== 마이 페이지 ==");
+		System.out.printf("가입일 : %s\n", Util.datetimeFormat(Session.getLoginedMember().regDate));
+		System.out.printf("수정일 : %s\n", Util.datetimeFormat(Session.getLoginedMember().updateDate));
+		System.out.printf("로그인 아이디 : %s\n", Session.getLoginedMember().loginId);
+		System.out.printf("이름 : %s\n", Session.getLoginedMember().name);
 	}
 	
 }
